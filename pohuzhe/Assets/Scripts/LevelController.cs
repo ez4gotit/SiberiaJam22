@@ -37,9 +37,8 @@ public class LevelController : MonoBehaviour
     [Header("Player Statistics")]
     public StatisticsController statisticsController;
     public float timeLeft { get; private set; }
-
+    public GameObject congrats;
     public float maxTimeSeconds = 600f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -51,7 +50,8 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeLeft = maxTimeSeconds - Time.realtimeSinceStartup;
+        timeLeft = maxTimeSeconds - Time.timeSinceLevelLoad;
+        if (timeLeft <= 0) Congratulation();
     }
 
 
@@ -86,5 +86,9 @@ public class LevelController : MonoBehaviour
     private void OnLevelRestart()
     {
         SceneManager.LoadScene(0);
+    }
+    private void Congratulation()
+    {
+        congrats.SetActive(true);
     }
 }
