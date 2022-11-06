@@ -12,6 +12,7 @@ public class InputControls : MonoBehaviour
     [SerializeField] private KeyCode Interact= KeyCode.E;
     [SerializeField] private KeyCode Attack = KeyCode.Mouse0;
     [SerializeField] private KeyCode Shield = KeyCode.Space;
+    [SerializeField] private LayerMask collectables;
     private Rigidbody2D rigidbody;
     // Start is called before the first frame update
     void Start()
@@ -42,7 +43,7 @@ public class InputControls : MonoBehaviour
         {
             playerController.isProtected = false;
         }
-
+        if (Input.GetKeyDown(Interact)) TryEatFood();
 
         finalDirection = Vector2.ClampMagnitude(_direction* playerController.levelController.playerMoveSpeedMultiplier + _negativeDirection* playerController.levelController.playerMoveSpeedMultiplier, playerController.levelController.playerMoveSpeedMultiplier);
     }
@@ -54,7 +55,10 @@ public class InputControls : MonoBehaviour
         {
             playerController.animator.Play("MCRun");
         }
-        playerController.animator.Play("MCIdle");
+        else
+        {
+            playerController.animator.Play("MCIdle");
+        }
         
     }
 
@@ -73,4 +77,10 @@ public class InputControls : MonoBehaviour
         
     }
 
+    Collider2D collider2D;
+    private void TryEatFood()
+    {
+        
+    }
+    
 }

@@ -3390,6 +3390,9 @@ MonoBehaviour:
   Interact: 101
   Attack: 323
   Shield: 32
+  collectables:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1679193238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3448,7 +3451,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 0.0001}
+  m_Size: {x: 0.6, y: 0.0001}
   m_Direction: 0
 --- !u!114 &1679193242
 MonoBehaviour:
