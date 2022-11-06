@@ -41,7 +41,7 @@ public class ShootingWeapon : MonoBehaviour
             RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, _direction, beginShootingRange, mask);
             if (raycastHit2D)
             {
-                Debug.Log(raycastHit2D.collider.gameObject.name);
+/*                Debug.Log(raycastHit2D.collider.gameObject.name);*/
                 if (LayerMask.LayerToName(raycastHit2D.collider.gameObject.layer)== "Player")
                 {
 

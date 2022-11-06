@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(stamina);
         clampStamina();
         Run.Invoke();
         if(satiety>=0)

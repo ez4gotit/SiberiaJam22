@@ -57,7 +57,7 @@ public class InputControls : MonoBehaviour
         if (playerController.stamina >= 0)
         {
             playerController.isProtected = true;
-            playerController.StaminaRegenerate(Time.deltaTime);
+            playerController.StaminaRegenerate(-10*Time.deltaTime);
             return;
         }
         
