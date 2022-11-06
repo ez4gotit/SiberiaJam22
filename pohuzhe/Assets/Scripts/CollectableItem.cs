@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollectableItem : MonoBehaviour
 {
     enum collectableType {food, strength, stamina, health, speed }
+    EnemyController enemyController;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,9 @@ public class CollectableItem : MonoBehaviour
     void Update()
     {
         
+    }
+    void UpgradePlayerStats()
+    {
+
     }
 }
