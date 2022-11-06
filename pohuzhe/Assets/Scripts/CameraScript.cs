@@ -1,16 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
+public class CameraScript : MonoBehaviour
 {
-
-
-
-    public event UnityAction Damaged;
-    public event UnityAction Died;
-
+    const float cameraDistance= -10;
+    [SerializeField] private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +15,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        gameObject.transform.position = player.transform.position+ Vector3.forward*cameraDistance;   
     }
-
-
-    
 }
