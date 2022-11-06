@@ -39,6 +39,9 @@ public class LevelController : MonoBehaviour
     public float timeLeft { get; private set; }
     public GameObject congrats;
     public float maxTimeSeconds = 600f;
+    [Header("Audio")]
+    public AudioClip shoot;
+    public AudioClip sosihui;
     // Start is called before the first frame update
     void Start()
     {

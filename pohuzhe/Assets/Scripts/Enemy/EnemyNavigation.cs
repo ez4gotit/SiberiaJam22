@@ -35,7 +35,8 @@ public class EnemyNavigation : MonoBehaviour
             inAccuracy = RandomVector(enemyController.moveInAccuracy);
             if (Vector2.Distance(gameObject.transform.position, playerTransform.position) > enemyController.stopDistance)
             {
-                navMeshAgent.SetDestination(playerTransform.position + inAccuracy);
+                try { navMeshAgent.SetDestination(playerTransform.position + inAccuracy); }
+                catch { Destroy(gameObject); }
                 OnRun();
             }
             else

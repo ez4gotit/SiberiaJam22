@@ -17,11 +17,13 @@ public class PlayerSpriteFlip : MonoBehaviour
     {
         if(Input.mousePosition.x<Screen.currentResolution.width/2)
         {
-            gameObject.transform.localScale = (Vector2.up + Vector2.left) * levelController.playerSizeMultiplier;
+            gameObject.transform.GetComponent<SpriteRenderer>().flipX = true;
+            
         }
         else
         {
-            gameObject.transform.localScale = (Vector2.up + Vector2.right) * levelController.playerSizeMultiplier;
+            gameObject.transform.GetComponent<SpriteRenderer>().flipX = false;
+
         }
     }
 }

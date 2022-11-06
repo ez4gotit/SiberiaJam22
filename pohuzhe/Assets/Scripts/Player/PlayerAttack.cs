@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
-    private Animator anim;
     public float attackTime;
     public float startTimeAttack;
     public Transform attackLocation;
@@ -14,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+ 
         playerController = GetComponent<PlayerController>();
     }
     void Update()
@@ -23,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
-                anim.SetBool("Is_attacking", true);
+            
                 Collider2D[] damage = Physics2D.OverlapCircleAll(attackLocation.position, attackRange*playerController.levelController.playerSplashAttackRadius, enemies);
                 
                 for (int i = 0; i < damage.Length; i++)
@@ -36,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             attackTime -= Time.deltaTime;
-            anim.SetBool("Is_attacking", false);
+            
         }
     }
     private void OnDrawGizmosSelected()

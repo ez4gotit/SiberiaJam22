@@ -26,10 +26,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private InputControls inputControls;
     [SerializeField] private float maxStamina= 100;
     [SerializeField] private float maxSatiety= 100;
+    public Animator animator;
+    [SerializeField] private AnimationClip runClip;
     // Start is called before the first frame update
     void Start()
     {
-
+        Run += AnimateRun;
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log(stamina + "   " + satiety);
         clampStamina();
         Run.Invoke();
-        if(satiety>=0)
+        if (satiety>=0)
         {
             satiety -= Time.deltaTime*satietyReduceSpeed;
             StaminaRegenerate(staminaRegenerationSpeed*Time.deltaTime*levelController.playerStaminaRegenerationMultiplier);
@@ -80,5 +82,8 @@ public class PlayerController : MonoBehaviour
     {
         levelController.statisticsController.IncrementExperience();
     }
-
+    void AnimateRun()
+    {
+        
+    }
 }
