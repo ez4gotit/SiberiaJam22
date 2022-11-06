@@ -42,6 +42,7 @@ public class LevelController : MonoBehaviour
     [Header("Audio")]
     public AudioClip shoot;
     public AudioClip sosihui;
+    public List<GameObject> foodPrefabs;
     // Start is called before the first frame update
     void Start()
     {

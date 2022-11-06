@@ -21,6 +21,7 @@ public class InputControls : MonoBehaviour
         playerController = gameObject.GetComponent<PlayerController>();
         playerController.Run += Run;
         playerController.Shield += ShieldActivate;
+        collider2D = gameObject.GetComponent<Collider2D>();
     }
     Vector2 _direction = Vector2.zero;
     Vector2 _negativeDirection = Vector2.zero;
@@ -80,7 +81,15 @@ public class InputControls : MonoBehaviour
     Collider2D collider2D;
     private void TryEatFood()
     {
-        
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.layerMask = collectables;
+        Collider2D[] collisions = new Collider2D[1];
+        collider2D.OverlapCollider(filter, collisions);
+        collisions[0].GetComponent<CollectableItem>().UpgradePlayerStats();
+        Destroy(collisions[0].gameObject);
+            {
+
+        }
     }
     
 }

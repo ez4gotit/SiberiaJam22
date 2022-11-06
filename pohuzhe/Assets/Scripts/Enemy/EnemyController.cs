@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+using System;
 public class EnemyController : MonoBehaviour
 {
 
@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
     private ShootingWeapon shootingWeapon;
     private PlayerController playerController;
     private float unstunTime = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -67,11 +67,18 @@ public class EnemyController : MonoBehaviour
         if(unstunTime <= Time.time)        isStuned = false;
 
     }
+    System.Random rnd = new System.Random();
     void Die()
     {
+        
         GameObject buff = Instantiate(ExpPrefab, transform.position, Quaternion.identity);
         buff.GetComponent<ExpParticle>().playerController = levelController.playerController;
+        
+        buff = Instantiate(levelController.foodPrefabs[rnd.Next(0, levelController.foodPrefabs.ToArray().Length)], transform.position, Quaternion.identity);
+        buff.GetComponent<CollectableItem>().levelControllerSetup(levelController);
         Destroy(gameObject);
+        
+        
     }
     void DamageRecieved()
     {
