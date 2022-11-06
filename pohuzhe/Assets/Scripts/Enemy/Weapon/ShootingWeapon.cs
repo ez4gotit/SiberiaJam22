@@ -16,6 +16,7 @@ public class ShootingWeapon : MonoBehaviour
     [SerializeField] private float NextTimeToShoot = 0;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject weapon;
+    [SerializeField] private LayerMask mask;
     public GameObject bulletPrefab;
     
     public UnityAction shoot;
@@ -37,11 +38,11 @@ public class ShootingWeapon : MonoBehaviour
         _direction = targetPosition - (Vector2)transform.position;
         if (!enemyController.isStuned)
         {
-            LayerMask mask = ~LayerMask.NameToLayer("Enemy");
+
             RaycastHit2D raycastHit2D = Physics2D.Raycast(transform.position, _direction, beginShootingRange, mask);
             if (raycastHit2D)
             {
-/*                Debug.Log(raycastHit2D.collider.gameObject.name);*/
+                Debug.Log(raycastHit2D.collider.gameObject.name);
                 if (LayerMask.LayerToName(raycastHit2D.collider.gameObject.layer)== "Player")
                 {
 

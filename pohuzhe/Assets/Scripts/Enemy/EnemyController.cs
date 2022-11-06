@@ -11,7 +11,8 @@ public class EnemyController : MonoBehaviour
     public float stopDistance { get; private set; } = 1;
     public float moveInAccuracy { get; private set; } = 0;
     public bool isStuned { get; private set; } = false;
-    [SerializeField] private float health;
+    [SerializeField] private float health = 100f;
+    [SerializeField] private GameObject ExpPrefab;
     public  UnityAction Idle;
     public  UnityAction Run;
     public  UnityAction Died;
@@ -29,12 +30,13 @@ public class EnemyController : MonoBehaviour
         shootingWeapon.shoot += OnShoot;
         Stun += Stuned;
         Died += Die;
+        Damaged += OnDamaged;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        UnStun();
     }
 
 
@@ -45,14 +47,15 @@ public class EnemyController : MonoBehaviour
 
     private void OnDamaged()
     {
-        Stun.Invoke();
+
     }
 
 
     public void HealthDecrement(float damage)
     {
-        health -= damage;
-        if (health <= 0) Died.Invoke();
+        DamageRecieved();
+        health -= damage/levelController.playerMaxHealthMultiplier;
+        if (health*levelController.playerMaxHealthMultiplier <= 0) Died.Invoke();
     }
     private void Stuned()
     {
@@ -66,7 +69,9 @@ public class EnemyController : MonoBehaviour
     }
     void Die()
     {
-
+        GameObject buff = Instantiate(ExpPrefab, transform.position, Quaternion.identity);
+        buff.GetComponent<ExpParticle>().playerController = levelController.playerController;
+        Destroy(gameObject);
     }
     void DamageRecieved()
     {

@@ -34,7 +34,7 @@ public class InputControls : MonoBehaviour
         if (Input.GetKey(Down)) _negativeDirection.y = -1 ;
         if (Input.GetKey(Left)) _negativeDirection.x = -1;
         if (Input.GetKey(Right)) _direction.x = 1;
-        if(Input.GetKeyDown(Shield))
+        if(Input.GetKey(Shield))
         {
             playerController.Shield.Invoke();
         }
@@ -57,8 +57,12 @@ public class InputControls : MonoBehaviour
         if (playerController.stamina >= 0)
         {
             playerController.isProtected = true;
-            playerController.StaminaRegenerate(-10*Time.deltaTime);
+            playerController.StaminaReduce(playerController.staminaReduceSpeed*Time.deltaTime);
             return;
+        }
+        else
+        {
+            playerController.isProtected = false;
         }
         
     }

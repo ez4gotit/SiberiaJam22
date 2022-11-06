@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
     public float health { get; private set; } = 100;
     public float stamina { get; private set; } = 100;
     public float satiety { get; private set; } = 100;
-    
+    public float staminaReduceSpeed = 10f;
+    public float staminaRegenerationSpeed = 5f;
+    public float satietyReduceSpeed = 20f;
     public const float stunLength = 0.2f;
     public bool isProtected = false;
     [SerializeField]private AnimationController animationController;
@@ -33,13 +35,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stamina);
+        Debug.Log(stamina + "   " + satiety);
         clampStamina();
         Run.Invoke();
         if(satiety>=0)
         {
-            satiety -= Time.deltaTime;
-            if (stamina < maxStamina*levelController.playerMaxStaminaMultiplier) StaminaRegenerate(Time.deltaTime*levelController.playerStaminaRegenerationMultiplier);
+            satiety -= Time.deltaTime*satietyReduceSpeed;
+            StaminaRegenerate(staminaRegenerationSpeed*Time.deltaTime*levelController.playerStaminaRegenerationMultiplier);
         }
     }
 
@@ -61,14 +63,22 @@ public class PlayerController : MonoBehaviour
         stamina += amount;
         
     }
-    public void SatietyRegenerate()
+    public void StaminaReduce(float amount)
     {
-
+        stamina -= amount;
+    }
+    public void SatietyRegenerate(float amount)
+    {
+        satiety += amount;
     }
 
     private void clampStamina()
     {
-        if (stamina >= maxStamina*levelController.playerMaxStaminaMultiplier) stamina = maxStamina;
+        if (stamina >= maxStamina*levelController.playerMaxStaminaMultiplier) stamina = maxStamina*levelController.playerMaxStaminaMultiplier;
+    }
+    public void ExpIncrement()
+    {
+        levelController.statisticsController.IncrementExperience();
     }
 
 }

@@ -46,7 +46,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4848832173263971270}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelController: {fileID: 0}
   health: 10
+  ExpPrefab: {fileID: 3326395451332014054, guid: 4afc4cbcbf5c72a47a70a84eda79177b, type: 3}
 --- !u!114 &4848832173263971266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +192,9 @@ MonoBehaviour:
   NextTimeToShoot: 0
   bulletSpawnPoint: {fileID: 4848832173513197381}
   weapon: {fileID: 4848832173705188014}
+  mask:
+    serializedVersion: 2
+    m_Bits: 8
   bulletPrefab: {fileID: 4664149714135528802, guid: 33873bb33a5de9340bdc7061beb82b5b, type: 3}
 --- !u!1 &4848832173513197380
 GameObject:

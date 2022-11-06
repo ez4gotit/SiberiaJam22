@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
         if(Time.time-timeBuffer > frequency && Time.time-timeBuffer>0)
         {
             timeBuffer = Time.time + frequency;
-            Vector2 Position = new Vector2(levelController.playerController.gameObject.transform.position.x+(0.5f-Random.value)*Random.value * 40, levelController.playerController.gameObject.transform.position.y + (0.5f - Random.value) * Random.value *26);
+            Vector2 Position = new Vector2(levelController.playerController.gameObject.transform.position.x+(0.5f-Random.value)*(Random.value * 80+20), levelController.playerController.gameObject.transform.position.y + (0.5f - Random.value) * (Random.value *52+13));
             GameObject enemy = Instantiate(enemyPrefab,Position, Quaternion.identity);
             enemy.GetComponent<EnemyController>().levelController = levelController;
         }
