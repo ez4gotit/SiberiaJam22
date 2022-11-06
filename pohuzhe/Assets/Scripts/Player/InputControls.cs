@@ -52,10 +52,8 @@ public class InputControls : MonoBehaviour
         rigidbody.velocity = finalDirection;
         if (finalDirection.magnitude > 0)
         {
-            playerController.animator.speed = 0.2f;
             playerController.animator.Play("MCRun");
         }
-        playerController.animator.speed = 1f;
         playerController.animator.Play("MCIdle");
         
     }

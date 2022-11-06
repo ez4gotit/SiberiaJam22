@@ -28,6 +28,7 @@ public class PlayerAttack : MonoBehaviour
                 for (int i = 0; i < damage.Length; i++)
                 {
                     damage[i].gameObject.GetComponent<EnemyController>().HealthDecrement(damageAmount*playerController.levelController.playerDamageMultiplier);
+                    playerController.animator.Play("MCAttack");
                 }
             }
             attackTime = startTimeAttack;
