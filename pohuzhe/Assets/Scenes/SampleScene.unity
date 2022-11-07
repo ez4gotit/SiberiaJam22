@@ -1214,7 +1214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4848832173263971270, guid: b65c1b8e66fbf7e47b484bdb9ca44532, type: 3}
-  frequency: 2
+  frequency: 1
   frequencyIncreaseCoefficient: 1
   startTimeSecs: 1
   levelController: {fileID: 1085059933}
@@ -5578,7 +5578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 6118250290251678396, guid: b67780e7fe8e5d340aae067be1a9a496, type: 3}
-  frequency: 0.2
+  frequency: 1
   frequencyIncreaseCoefficient: 1
   startTimeSecs: 1
   levelController: {fileID: 1085059933}
